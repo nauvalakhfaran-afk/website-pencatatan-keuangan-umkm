@@ -1,0 +1,52 @@
+<!-- ============================================================
+     pages/auth.html
+     Halaman Login & Register
+     Logic: assets/js/auth.js
+     ============================================================ -->
+<div id="auth-page">
+    <div class="auth-box">
+        <h1>💰 SiKeuangan</h1>
+        <p>Sistem Keuangan Usaha</p>
+
+        <div class="auth-tabs">
+            <button class="auth-tab active" onclick="switchTab('login')">Login</button>
+            <button class="auth-tab"        onclick="switchTab('register')">Daftar</button>
+        </div>
+        <div id="auth-alert" class="alert"></div>
+
+        <!-- Form Login -->
+        <div id="login-form">
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text"     id="login-username" placeholder="Masukkan username"
+                       onkeydown="if(event.key==='Enter') doLogin()">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="login-password" placeholder="Masukkan password"
+                       onkeydown="if(event.key==='Enter') doLogin()">
+            </div>
+            <button class="btn btn-primary" style="width:100%" onclick="doLogin()">Login</button>
+            <p style="font-size:12px;color:#666;margin-top:10px;text-align:center">
+                Default: admin / password
+            </p>
+        </div>
+
+        <!-- Form Register -->
+        <div id="register-form" style="display:none">
+            <div class="form-group">
+                <label>Nama Lengkap</label>
+                <input type="text"     id="reg-nama"     placeholder="Nama lengkap">
+            </div>
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text"     id="reg-username" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <label>Password (min 6 karakter)</label>
+                <input type="password" id="reg-password" placeholder="Password">
+            </div>
+            <button class="btn btn-success" style="width:100%" onclick="doRegister()">Daftar</button>
+        </div>
+    </div>
+</div>
