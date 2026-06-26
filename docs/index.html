@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dokumentasi SIKeuangan</title>
+
+<!-- Bootstrap 5 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy:#122C34;
+    --navy-soft:#1B3E47;
+    --ink:#1B2A2E;
+    --paper:#FAFAF8;
+    --paper-alt:#F1F3EF;
+    --emerald:#1F7A5C;
+    --emerald-deep:#155C44;
+    --amber:#D6962B;
+    --rule:#E1E4DE;
+    --muted:#6B7570;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:.98rem;
+    line-height:1.65;
+  }
+  .font-display{font-family:'Fraunces',serif;}
+  .font-mono{font-family:'IBM Plex Mono',monospace;}
+
+  /* ---------- Content ---------- */
+  .hero{
+    background:linear-gradient(180deg,var(--navy) 0%, var(--navy-soft) 100%);
+    color:#fff;
+    padding:4.2rem 3rem 3.4rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;
+    border:1px solid rgba(255,255,255,.07);border-radius:50%;
+  }
+  .hero::before{
+    content:"";position:absolute;right:20px;top:40px;width:180px;height:180px;
+    border:1px solid rgba(255,255,255,.06);border-radius:50%;
+  }
+  .hero .badge-stack{margin-bottom:1.1rem;}
+  .hero .badge-stack .badge{
+    background:rgba(255,255,255,.1);color:#CFE0DB;font-weight:500;
+    font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.04em;
+    padding:.4rem .7rem;margin-right:.4rem;
+  }
+  .hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:2.6rem;margin-bottom:.9rem;}
+  .hero p.lead{color:#C7D8D2;max-width:760px;font-size:1.05rem;}
+
+  section.doc-section{padding:3.2rem 3rem;border-bottom:1px solid var(--rule);max-width:1100px;margin:0 auto;}
+  section.doc-section:last-of-type{border-bottom:none;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;font-size:.74rem;letter-spacing:.08em;
+    color:var(--emerald-deep);text-transform:uppercase;margin-bottom:.6rem;display:block;
+  }
+  h2.section-title{font-family:'Fraunces',serif;font-weight:600;font-size:1.85rem;margin-bottom:.4rem;}
+  h3.sub-title{font-family:'Fraunces',serif;font-weight:600;font-size:1.35rem;margin-top:2.4rem;margin-bottom:.7rem;color:var(--navy);}
+  .section-desc{color:var(--muted);max-width:760px;margin-bottom:1.6rem;}
+
+  /* tables */
+  .table-ledger{border-collapse:separate;border-spacing:0;width:100%;}
+  .table-ledger thead th{
+    font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;
+    color:#fff;background:var(--navy);border:none;padding:.65rem .9rem;font-weight:500;
+  }
+  .table-ledger thead th:first-child{border-radius:8px 0 0 0;}
+  .table-ledger thead th:last-child{border-radius:0 8px 0 0;}
+  .table-ledger td{padding:.7rem .9rem;border-bottom:1px solid var(--rule);font-size:.9rem;vertical-align:top;}
+  .table-ledger tbody tr:nth-child(odd){background:var(--paper-alt);}
+
+  /* feature cards */
+  .feature-card{
+    background:#fff;border:1px solid var(--rule);border-radius:10px;padding:1.3rem 1.4rem;height:100%;
+    transition:.18s;
+  }
+  .feature-card:hover{border-color:var(--emerald);box-shadow:0 6px 18px -8px rgba(18,44,52,.18);}
+  .feature-card .icon-wrap{
+    width:40px;height:40px;border-radius:8px;background:var(--paper-alt);color:var(--emerald-deep);
+    display:flex;align-items:center;justify-content:center;font-size:1.15rem;margin-bottom:.8rem;
+  }
+  .feature-card h4{font-family:'Fraunces',serif;font-size:1.02rem;font-weight:600;margin-bottom:.35rem;}
+  .feature-card p{font-size:.85rem;color:var(--muted);margin-bottom:0;}
+
+  /* persona cards */
+  .persona-card{border-left:3px solid var(--emerald);background:#fff;border-radius:0 8px 8px 0;padding:1rem 1.2rem;height:100%;border-top:1px solid var(--rule);border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+  .persona-card h5{font-family:'Fraunces',serif;font-size:1rem;font-weight:600;margin-bottom:.3rem;}
+  .persona-card p{font-size:.85rem;color:var(--muted);margin-bottom:0;}
+
+  /* workflow */
+  .workflow{display:flex;flex-wrap:wrap;gap:0;align-items:stretch;}
+  .workflow-step{
+    background:#fff;border:1px solid var(--rule);border-radius:10px;padding:1rem 1.1rem;
+    flex:1 1 150px;min-width:140px;position:relative;
+  }
+  .workflow-step .step-num{
+    font-family:'IBM Plex Mono',monospace;color:var(--amber);font-size:.75rem;font-weight:600;
+  }
+  .workflow-step h6{font-family:'Fraunces',serif;font-size:.92rem;font-weight:600;margin:.3rem 0 .25rem;}
+  .workflow-step p{font-size:.78rem;color:var(--muted);margin-bottom:0;}
+  .workflow-arrow{display:flex;align-items:center;justify-content:center;color:var(--rule);font-size:1.3rem;padding:0 .35rem;}
+
+  /* calculator / formula block */
+  .calc-screen{
+    background:var(--navy);
+    border-radius:10px;
+    padding:1.3rem 1.5rem;
+    margin:1.2rem 0 1.6rem;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.05);
+  }
+  .calc-screen .calc-label{
+    font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.07em;color:#7E9C92;
+    text-transform:uppercase;margin-bottom:.6rem;display:block;
+  }
+  .calc-screen .calc-line{
+    font-family:'IBM Plex Mono',monospace;color:#9FE6C4;font-size:.92rem;line-height:1.9;
+  }
+  .calc-screen .calc-line .op{color:var(--amber);}
+  .calc-screen .calc-result{color:#fff;font-weight:600;}
+
+  /* steps list */
+  ol.step-list{padding-left:0;list-style:none;counter-reset:step;}
+  ol.step-list li{
+    counter-increment:step;position:relative;padding-left:2.6rem;margin-bottom:1rem;font-size:.92rem;
+  }
+  ol.step-list li::before{
+    content:counter(step);
+    position:absolute;left:0;top:-.05rem;
+    width:1.85rem;height:1.85rem;border-radius:50%;
+    background:var(--paper-alt);color:var(--emerald-deep);
+    font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.8rem;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--rule);
+  }
+
+  .callout{
+    border-left:3px solid var(--amber);background:#FFF8EC;border-radius:0 8px 8px 0;
+    padding:.85rem 1.1rem;font-size:.86rem;color:#6B4E1B;margin-top:1rem;
+  }
+
+  /* team */
+  .team-card{
+    background:#fff;border:1px solid var(--rule);border-radius:10px;padding:1.4rem;text-align:center;height:100%;
+  }
+  .team-avatar{
+    width:56px;height:56px;border-radius:50%;margin:0 auto .8rem;
+    background:linear-gradient(135deg,var(--emerald),var(--navy-soft));
+    color:#fff;font-family:'Fraunces',serif;font-weight:600;font-size:1.2rem;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .team-card h5{font-family:'Fraunces',serif;font-size:1rem;font-weight:600;margin-bottom:.15rem;}
+  .team-card .role{
+    display:inline-block;background:var(--paper-alt);color:var(--emerald-deep);
+    font-family:'IBM Plex Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;
+    padding:.2rem .55rem;border-radius:5px;margin-bottom:.5rem;
+  }
+  .team-card .nim{color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:.8rem;}
+
+  footer.doc-footer{
+    background:var(--navy);color:#9FB6AE;padding:1.6rem 3rem;font-size:.8rem;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;
+  }
+
+  @media (max-width: 767.98px){
+    .hero{padding:2.6rem 1.4rem 2.2rem;}
+    .hero h1{font-size:2rem;}
+    section.doc-section{padding:2.2rem 1.4rem;}
+    footer.doc-footer{padding:1.4rem;flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="badge-stack">
+      <span class="badge">PHP</span>
+      <span class="badge">BOOTSTRAP 5</span>
+      <span class="badge">WEB APP</span>
+    </div>
+    <h1>Dokumentasi SIKeuangan</h1>
+    <p class="lead">Panduan lengkap penggunaan Sistem Informasi Keuangan Usaha — dari registrasi hingga pembuatan laporan keuangan.</p>
+  </div>
+
+  <!-- ============ 01 GAMBARAN UMUM ============ -->
+  <section class="doc-section" id="gambaran-umum">
+    <span class="eyebrow">01 — Gambaran Umum Sistem</span>
+    <h2 class="section-title">Apa itu SIKeuangan?</h2>
+    <p class="section-desc">
+      SIKeuangan (Sistem Informasi Keuangan Usaha) adalah aplikasi web berbasis PHP dan Bootstrap 5 yang dirancang untuk membantu pelaku usaha kecil dan menengah mengelola keuangan bisnis secara terpusat, akurat, dan mudah dipahami. Aplikasi ini menyediakan pencatatan transaksi pemasukan dan pengeluaran, perhitungan Harga Pokok Penjualan (HPP), analisis Break Even Point (BEP), serta pembuatan laporan keuangan.
+    </p>
+
+    <h3 class="sub-title" id="tujuan-manfaat">Tujuan &amp; Manfaat Sistem</h3>
+    <div class="table-responsive">
+      <table class="table-ledger">
+        <thead><tr><th>Tujuan</th><th>Manfaat bagi Pengguna</th></tr></thead>
+        <tbody>
+          <tr><td>Mencatat setiap transaksi keuangan secara real-time</td><td>Tidak ada catatan yang terlewat atau hilang</td></tr>
+          <tr><td>Menghitung HPP secara otomatis dan akurat</td><td>Penentuan harga jual yang tepat dan menguntungkan</td></tr>
+          <tr><td>Menganalisis titik impas (BEP) produk</td><td>Mengetahui target penjualan minimum agar tidak rugi</td></tr>
+          <tr><td>Menghasilkan laporan keuangan per periode</td><td>Pengambilan keputusan bisnis berbasis data</td></tr>
+          <tr><td>Memvisualisasikan tren 6 bulan terakhir</td><td>Melihat pola pemasukan dan pengeluaran dengan mudah</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title" id="target-pengguna">Target Pengguna</h3>
+    <p class="section-desc">SIKeuangan dirancang untuk berbagai kalangan pelaku usaha yang membutuhkan pengelolaan keuangan yang sederhana namun informatif.</p>
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-3">
+        <div class="persona-card">
+          <h5>Pelaku UMKM</h5>
+          <p>Pemilik usaha kecil (warung, toko, kuliner) yang ingin memisahkan keuangan usaha dari keuangan pribadi.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="persona-card">
+          <h5>Produsen Skala Kecil</h5>
+          <p>Pelaku industri rumahan yang perlu menghitung biaya produksi (HPP) dan menentukan harga jual yang menguntungkan.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="persona-card">
+          <h5>Wirausaha Pemula</h5>
+          <p>Pengusaha baru yang membutuhkan sistem pencatatan keuangan sederhana tanpa perlu keahlian akuntansi khusus.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="persona-card">
+          <h5>Mahasiswa / Akademik</h5>
+          <p>Mahasiswa yang mempelajari sistem informasi keuangan atau mengelola unit usaha kampus.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title" id="fitur-fitur">Fitur yang Tersedia</h3>
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-card">
+          <div class="icon-wrap"><i class="bi bi-shield-lock"></i></div>
+          <h4>Autentikasi Pengguna</h4>
+          <p>Login, registrasi, dan manajemen sesi yang aman. Setiap pengguna memiliki data keuangan terpisah.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-card">
+          <div class="icon-wrap"><i class="bi bi-speedometer2"></i></div>
+          <h4>Dashboard Real-time</h4>
+          <p>Ringkasan total pemasukan, pengeluaran, saldo akhir, laba/rugi, dan grafik 6 bulan terakhir.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-card">
+          <div class="icon-wrap"><i class="bi bi-arrow-down-circle"></i></div>
+          <h4>Manajemen Pemasukan</h4>
+          <p>Catat, edit, dan hapus setiap transaksi pemasukan lengkap dengan tanggal dan keterangan.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-card">
+          <div class="icon-wrap"><i class="bi bi-arrow-up-circle"></i></div>
+          <h4>Manajemen Pengeluaran</h4>
+          <p>Catat setiap pengeluaran bisnis secara terstruktur untuk kontrol biaya yang lebih baik.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-card">
+          <div class="icon-wrap"><i class="bi bi-clock-history"></i></div>
+          <h4>Riwayat Transaksi</h4>
+          <p>Tampilan gabungan seluruh transaksi dengan filter pencarian, jenis, dan rentang tanggal.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-card">
+          <div class="icon-wrap"><i class="bi bi-calculator"></i></div>
+          <h4>Kalkulator HPP</h4>
+          <p>Hitung Harga Pokok Penjualan dari bahan baku, tenaga kerja, dan biaya operasional secara otomatis.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-card">
+          <div class="icon-wrap"><i class="bi bi-graph-up-arrow"></i></div>
+          <h4>Kalkulator BEP</h4>
+          <p>Analisis Break Even Point dalam satuan unit dan rupiah untuk menentukan target penjualan minimum.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-card">
+          <div class="icon-wrap"><i class="bi bi-file-earmark-text"></i></div>
+          <h4>Laporan Keuangan</h4>
+          <p>Generate laporan keuangan berdasarkan bulan atau rentang tanggal kustom yang dapat dicetak.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 PANDUAN FITUR ============ -->
+  <section class="doc-section" id="panduan-fitur">
+    <span class="eyebrow">02 — Panduan Untuk Setiap Fitur</span>
+    <h2 class="section-title" id="alur-penggunaan">Alur Penggunaan</h2>
+    <p class="section-desc">Urutan umum penggunaan sistem dari awal hingga laporan keuangan siap dicetak.</p>
+
+    <div class="workflow">
+      <div class="workflow-step"><span class="step-num">01</span><h6>Buka Aplikasi</h6><p>Login jika sudah punya akun, atau registrasi terlebih dahulu.</p></div>
+      <div class="workflow-arrow"><i class="bi bi-arrow-right d-none d-md-inline"></i><i class="bi bi-arrow-down d-md-none"></i></div>
+      <div class="workflow-step"><span class="step-num">02</span><h6>Masuk ke Dashboard</h6><p>Lihat ringkasan kondisi keuangan usaha secara real-time.</p></div>
+      <div class="workflow-arrow"><i class="bi bi-arrow-right d-none d-md-inline"></i><i class="bi bi-arrow-down d-md-none"></i></div>
+      <div class="workflow-step"><span class="step-num">03</span><h6>Gunakan Modul</h6><p>Pemasukan, Pengeluaran, HPP, atau BEP sesuai kebutuhan.</p></div>
+      <div class="workflow-arrow"><i class="bi bi-arrow-right d-none d-md-inline"></i><i class="bi bi-arrow-down d-md-none"></i></div>
+      <div class="workflow-step"><span class="step-num">04</span><h6>Lihat Riwayat</h6><p>Tinjau seluruh transaksi dalam satu tampilan terpadu.</p></div>
+      <div class="workflow-arrow"><i class="bi bi-arrow-right d-none d-md-inline"></i><i class="bi bi-arrow-down d-md-none"></i></div>
+      <div class="workflow-step"><span class="step-num">05</span><h6>Buat Laporan</h6><p>Generate laporan keuangan per periode untuk dicetak.</p></div>
+    </div>
+
+    <!-- Registrasi & Login -->
+    <h3 class="sub-title" id="registrasi-login">Registrasi &amp; Login</h3>
+    <p class="section-desc">Sebelum dapat menggunakan SIKeuangan, pengguna wajib memiliki akun. Akun memastikan data keuangan setiap pengguna tersimpan secara terpisah dan aman.</p>
+    <div class="table-responsive">
+      <table class="table-ledger">
+        <thead><tr><th>Kolom</th><th>Keterangan</th><th>Aturan</th></tr></thead>
+        <tbody>
+          <tr><td>Nama Lengkap</td><td>Nama yang tampil di sidebar</td><td>Wajib diisi</td></tr>
+          <tr><td>Username</td><td>ID unik untuk login</td><td>Wajib, tidak boleh sama dengan pengguna lain</td></tr>
+          <tr><td>Password</td><td>Kata sandi akun</td><td>Minimal 6 karakter</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ol class="step-list mt-3">
+      <li>Isi formulir registrasi, lalu klik <strong>Daftar</strong>. Setelah berhasil, sistem menampilkan notifikasi sukses dan mengarahkan ke tab Login.</li>
+      <li>Masukkan username dan password pada tab Login, lalu klik <strong>Login</strong> atau tekan Enter.</li>
+      <li>Jika berhasil, sistem langsung menampilkan halaman Dashboard.</li>
+    </ol>
+
+    <!-- Dashboard -->
+    <h3 class="sub-title" id="dashboard">Dashboard</h3>
+    <p class="section-desc">Dashboard adalah halaman pertama setelah login, menyajikan ringkasan kondisi keuangan usaha secara menyeluruh dan real-time.</p>
+    <div class="table-responsive">
+      <table class="table-ledger">
+        <thead><tr><th>Komponen</th><th>Keterangan</th></tr></thead>
+        <tbody>
+          <tr><td>Total Pemasukan</td><td>Jumlah akumulasi seluruh transaksi pemasukan</td></tr>
+          <tr><td>Total Pengeluaran</td><td>Jumlah akumulasi seluruh transaksi pengeluaran</td></tr>
+          <tr><td>Saldo Akhir</td><td>Total Pemasukan dikurangi Total Pengeluaran</td></tr>
+          <tr><td>Laba / Rugi</td><td>Selisih pemasukan dan pengeluaran beserta status (Untung/Rugi)</td></tr>
+          <tr><td>Margin Keuntungan</td><td>Persentase keuntungan dari total pemasukan</td></tr>
+          <tr><td>HPP/Produk Terbaru</td><td>Harga pokok produksi dari kalkulasi HPP terakhir</td></tr>
+          <tr><td>BEP Terbaru</td><td>Nilai break even point dari kalkulasi BEP terakhir</td></tr>
+          <tr><td>Grafik</td><td>Grafik batang perbandingan pemasukan vs pengeluaran per bulan</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pemasukan -->
+    <h3 class="sub-title" id="pemasukan">Pemasukan</h3>
+    <p class="section-desc">Modul untuk mencatat seluruh transaksi pemasukan usaha secara rapi dan terstruktur.</p>
+    <ol class="step-list">
+      <li>Klik menu <strong>Pemasukan</strong> pada navigasi sidebar.</li>
+      <li>Isi formulir transaksi, lalu klik <strong>Tambah Pemasukan</strong>. Data tersimpan dan riwayat diperbarui otomatis.</li>
+      <li>Pada tabel riwayat, gunakan tombol <strong>Edit</strong> atau <strong>Hapus</strong> untuk mengelola data yang sudah ada.</li>
+    </ol>
+
+    <!-- Pengeluaran -->
+    <h3 class="sub-title" id="pengeluaran">Pengeluaran</h3>
+    <p class="section-desc">Modul Pengeluaran berfungsi untuk mencatat setiap biaya operasional usaha, seperti pembelian bahan baku, biaya listrik, gaji karyawan, atau ongkos kirim. Cara penggunaannya identik dengan modul Pemasukan — perbedaannya hanya pada jenis transaksi, setiap pengeluaran akan mengurangi saldo akhir usaha.</p>
+    <ol class="step-list">
+      <li>Klik menu <strong>Pengeluaran</strong> di sidebar.</li>
+      <li>Isi kolom Tanggal, Nama Transaksi, Jumlah, dan Keterangan (opsional), lalu klik <strong>Tambah Pengeluaran</strong>.</li>
+      <li>Data langsung muncul pada tabel riwayat dan dapat diedit atau dihapus.</li>
+    </ol>
+
+    <!-- Riwayat Transaksi -->
+    <h3 class="sub-title" id="riwayat-transaksi">Riwayat Transaksi</h3>
+    <p class="section-desc">Halaman ini menampilkan seluruh transaksi (pemasukan dan pengeluaran) dalam satu tampilan terpadu dengan kemampuan filter dan pencarian berdasarkan jenis maupun rentang tanggal.</p>
+
+    <!-- Kalkulator HPP -->
+    <h3 class="sub-title" id="kalkulator-hpp">Kalkulator HPP</h3>
+    <p class="section-desc"><strong>HPP (Harga Pokok Penjualan)</strong> adalah total biaya yang dikeluarkan untuk memproduksi suatu produk. Mengetahui HPP sangat penting untuk menentukan harga jual yang menguntungkan.</p>
+
+    <div class="calc-screen">
+      <span class="calc-label">Rumus HPP</span>
+      <div class="calc-line">HPP per Produk <span class="op">=</span> (Biaya Bahan Baku <span class="op">+</span> Biaya Tenaga Kerja <span class="op">+</span> Biaya Operasional) <span class="op">÷</span> Jumlah Produk</div>
+      <div class="calc-line">Margin Keuntungan <span class="op">=</span> ((Harga Jual <span class="op">−</span> HPP) <span class="op">÷</span> Harga Jual) <span class="op">×</span> 100%</div>
+    </div>
+
+    <ol class="step-list">
+      <li>Klik <strong>Kalkulator HPP</strong> di sidebar. Halaman terbagi dua: form kalkulator (kiri) dan riwayat HPP tersimpan (kanan).</li>
+      <li>Isi data produksi pada formulir yang tersedia.</li>
+      <li>Klik <strong>Hitung</strong> untuk melihat hasil: Total Biaya Produksi, HPP per Produk, Harga Jual, Laba per Produk, dan Margin Keuntungan. Nilai diperbarui real-time setiap ada input berubah.</li>
+      <li>Klik <strong>Simpan</strong> untuk menyimpan ke riwayat. Data terbaru juga tampil di widget Dashboard.</li>
+    </ol>
+
+    <div class="table-responsive">
+      <table class="table-ledger">
+        <thead><tr><th>Kolom</th><th>Contoh Nilai</th></tr></thead>
+        <tbody>
+          <tr><td>Tanggal</td><td>2025-06-25</td></tr>
+          <tr><td>Nama Produk</td><td>Kue Brownies</td></tr>
+          <tr><td>Biaya Bahan Baku (Rp)</td><td>150.000</td></tr>
+          <tr><td>Biaya Tenaga Kerja (Rp)</td><td>50.000</td></tr>
+          <tr><td>Biaya Operasional (Rp)</td><td>30.000</td></tr>
+          <tr><td>Jumlah Produk</td><td>20</td></tr>
+          <tr><td>Harga Jual per Produk (Rp)</td><td>15.000</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Kalkulator BEP -->
+    <h3 class="sub-title" id="kalkulator-bep">Kalkulator BEP</h3>
+    <p class="section-desc"><strong>BEP (Break Even Point)</strong> atau titik impas adalah kondisi di mana total pendapatan sama persis dengan total biaya — artinya usaha tidak untung dan tidak rugi. Mengetahui BEP membantu menetapkan target penjualan minimum.</p>
+
+    <div class="calc-screen">
+      <span class="calc-label">Rumus BEP</span>
+      <div class="calc-line">Kontribusi Margin <span class="op">=</span> Harga Jual per Unit <span class="op">−</span> Biaya Variabel per Unit</div>
+      <div class="calc-line">BEP (Unit) <span class="op">=</span> Biaya Tetap <span class="op">÷</span> Kontribusi Margin</div>
+      <div class="calc-line">BEP (Rupiah) <span class="op">=</span> BEP Unit <span class="op">×</span> Harga Jual per Unit</div>
+    </div>
+
+    <ol class="step-list">
+      <li>Klik <strong>Kalkulator BEP</strong> di sidebar.</li>
+      <li>Isi data biaya pada formulir yang tersedia.</li>
+      <li>Lihat hasil kalkulasi: Kontribusi Margin, BEP dalam satuan Unit, dan BEP dalam Rupiah.</li>
+      <li>Klik <strong>Simpan</strong> untuk menyimpan hasil ke riwayat. Data terbaru juga tampil di widget BEP pada Dashboard.</li>
+    </ol>
+
+    <div class="table-responsive mb-3">
+      <table class="table-ledger">
+        <thead><tr><th>Kolom</th><th>Penjelasan</th><th>Contoh</th></tr></thead>
+        <tbody>
+          <tr><td>Nama Produk</td><td>Identifikasi produk</td><td>Minuman Kopi</td></tr>
+          <tr><td>Biaya Tetap (Rp)</td><td>Biaya yang tidak berubah (sewa, gaji tetap)</td><td>2.000.000</td></tr>
+          <tr><td>Harga Jual per Unit (Rp)</td><td>Harga yang diterima per unit terjual</td><td>15.000</td></tr>
+          <tr><td>Biaya Variabel per Unit (Rp)</td><td>Biaya yang berubah sesuai produksi (bahan, kemasan)</td><td>8.000</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <i class="bi bi-lightbulb me-1"></i>
+      Contoh perhitungan: BEP = 2.000.000 ÷ (15.000 − 8.000) = <strong>286 unit</strong>.
+    </div>
+
+    <!-- Laporan Keuangan -->
+    <h3 class="sub-title" id="laporan-keuangan">Laporan Keuangan</h3>
+    <p class="section-desc">Modul Laporan menghasilkan ringkasan keuangan berdasarkan periode waktu yang dipilih, mencakup seluruh transaksi pemasukan dan pengeluaran beserta kalkulasi saldo akhir.</p>
+    <ol class="step-list">
+      <li>Klik <strong>Laporan</strong> di sidebar.</li>
+      <li>Tentukan periode laporan yang ingin ditampilkan.</li>
+      <li>Klik <strong>Tampilkan</strong>. Sistem merender laporan lengkap berisi semua transaksi dalam periode tersebut beserta total pemasukan, pengeluaran, dan saldo akhir.</li>
+      <li>Gunakan fitur cetak browser (Ctrl+P / ⌘+P) untuk mencetak atau menyimpan laporan sebagai PDF.</li>
+    </ol>
+  </section>
+
+  <!-- ============ 03 TIM PENGEMBANG ============ -->
+  <section class="doc-section" id="tim-pengembang">
+    <span class="eyebrow">03 — Tim Pengembang</span>
+    <h2 class="section-title">Di Balik SIKeuangan</h2>
+    <p class="section-desc">SIKeuangan dikembangkan sebagai proyek perangkat lunak oleh tim mahasiswa. Terima kasih atas dedikasi dan kerja keras seluruh anggota tim.</p>
+
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="team-card">
+          <div class="team-avatar">HM</div>
+          <h5>Hasim Mawardi</h5>
+          <span class="role">Frontend</span>
+          <div class="nim">NIM 223140125</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="team-card">
+          <div class="team-avatar">MN</div>
+          <h5>Muhammad Nauval Akhfaran</h5>
+          <span class="role">Backend</span>
+          <div class="nim">NIM 223140113</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="team-card">
+          <div class="team-avatar">RD</div>
+          <h5>Rizky Dwi Saputra</h5>
+          <span class="role">Integration</span>
+          <div class="nim">NIM 223140109</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="doc-footer">
+    <span>SIKeuangan — Sistem Informasi Keuangan Usaha</span>
+    <span>Dokumentasi dibuat dengan Bootstrap 5</span>
+  </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
