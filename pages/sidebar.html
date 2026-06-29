@@ -1,0 +1,35 @@
+<!-- ============================================================
+     pages/sidebar.html
+     Sidebar Navigasi Utama
+     Logic: assets/js/nav.js → showPage()
+            assets/js/auth.js → doLogout()
+     ============================================================ -->
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h2>💰 SiKeuangan</h2>
+        <p id="sidebar-user">-</p>
+    </div>
+    <div class="sidebar-nav">
+        <button class="nav-item active" onclick="showPage('dashboard')">
+            <span class="icon">📊</span> Dashboard
+        </button>
+        <button class="nav-item" onclick="showPage('pemasukan')">
+            <span class="icon">📈</span> Pemasukan
+        </button>
+        <button class="nav-item" onclick="showPage('pengeluaran')">
+            <span class="icon">📉</span> Pengeluaran
+        </button>
+        <button class="nav-item" onclick="showPage('transaksi')">
+            <span class="icon">📋</span> Riwayat Transaksi
+        </button>
+        <button class="nav-item" onclick="showPage('hpp')">
+            <span class="icon">🏭</span> Kalkulator HPP
+        </button>
+        <button class="nav-item" onclick="showPage('bep')">
+            <span class="icon">⚖️</span> Kalkulator BEP
+        </button>
+        <button class="nav-item" onclick="showPage('laporan')">
+            <span class="icon">📑</span> Laporan
+        </button>
+    </div>
+</div>
