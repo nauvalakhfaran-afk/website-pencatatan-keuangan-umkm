@@ -1,0 +1,307 @@
+/* =============================================
+   SiKeuangan - Global Stylesheet
+   File: assets/css/style.css
+   Menggunakan Bootstrap 5 sebagai dasar,
+   style.css ini hanya berisi override & tambahan.
+   ============================================= */
+
+/* ---- RESET dasar (tetap ada untuk keamanan) ---- */
+* { box-sizing: border-box; }
+body { background: #f0f2f5; color: #333; }
+
+/* ---- AUTH ---- */
+/* Pusatkan kotak login ke tengah layar */
+#auth-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Kotak login/register */
+.auth-box {
+    background: white;
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 360px;
+}
+.auth-box h1 { text-align: center; color: #1a73e8; }
+.auth-box > p { text-align: center; color: #666; font-size: 14px; }
+
+/* Tab Login / Daftar */
+.auth-tabs {
+    display: flex;
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+.auth-tab {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 14px;
+    color: #666;
+}
+.auth-tab.active {
+    color: #1a73e8;
+    border-bottom: 2px solid #1a73e8;
+    margin-bottom: -2px;
+}
+
+/* ---- LAYOUT ---- */
+/* Sembunyikan app saat belum login */
+#app { display: none; }
+
+/* Sidebar kiri tetap (fixed) */
+.sidebar {
+    width: 220px;
+    background: #1e293b;
+    color: white;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.sidebar-header {
+    padding: 20px 16px;
+    border-bottom: 1px solid #334155;
+}
+.sidebar-header h2 { font-size: 16px; color: #e2e8f0; }
+.sidebar-header p  { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+
+/* Navigasi sidebar */
+.sidebar-nav { padding: 8px 0; }
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 16px;
+    cursor: pointer;
+    color: #94a3b8;
+    font-size: 14px;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+}
+.nav-item:hover  { background: #334155; color: white; }
+.nav-item.active { background: #1a73e8; color: white; }
+.nav-item .icon  { font-size: 18px; width: 22px; text-align: center; }
+
+/* Konten utama di sebelah kanan sidebar */
+.main-content {
+    margin-left: 220px;
+    padding: 24px;
+    min-height: 100vh;
+}
+
+/* Topbar: judul halaman + tombol keluar */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+.topbar h1 { font-size: 20px; }
+
+/* Tombol logout — pakai btn-danger Bootstrap tapi override ukuran */
+.btn-logout {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+/* ---- KOMPONEN KARTU ---- */
+/* Pakai card Bootstrap, ini hanya tambahan */
+.card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    margin-bottom: 16px;
+    border: none; /* hapus border default Bootstrap */
+}
+.card-title { font-size: 13px; color: #666; margin-bottom: 8px; }
+.card-value { font-size: 24px; font-weight: bold; }
+
+/* ---- GRID LAYOUT (menggunakan CSS Grid bukan Bootstrap Grid) ---- */
+/* Dipertahankan karena digunakan di banyak halaman */
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 16px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+/* ---- WARNA TEKS KUSTOM ---- */
+.text-green  { color: #16a34a; }
+.text-red    { color: #dc2626; }
+.text-blue   { color: #1a73e8; }
+.text-orange { color: #d97706; }
+
+/* ---- FORM ---- */
+/* Bootstrap sudah handle sebagian besar, ini pelengkap */
+.form-group { margin-bottom: 14px; }
+label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 4px; color: #444; }
+
+/* Input, select, textarea — override Bootstrap agar konsisten */
+input, select, textarea {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-size: 14px;
+}
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 2px rgba(26,115,232,0.15); /* efek focus Bootstrap-style */
+}
+textarea { resize: vertical; min-height: 70px; }
+
+/* ---- TOMBOL (btn) ---- */
+/* Kelas .btn sendiri diambil dari Bootstrap,
+   tapi warna custom tetap didefinisikan di sini */
+.btn          { padding: 9px 18px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: 600; }
+.btn-primary  { background: #1a73e8; color: white; }
+.btn-success  { background: #16a34a; color: white; }
+.btn-danger   { background: #dc2626; color: white; }
+.btn-warning  { background: #d97706; color: white; }
+.btn-secondary{ background: #6b7280; color: white; }
+.btn-sm       { padding: 5px 10px; font-size: 12px; }
+
+/* ---- TABEL ---- */
+/* Override Bootstrap table agar sesuai desain asli */
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th {
+    background: #f8fafc;
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 12px;
+    color: #666;
+    border-bottom: 2px solid #e2e8f0;
+}
+td { padding: 10px 12px; border-bottom: 1px solid #f1f5f9; }
+tr:hover td { background: #f8fafc; }
+
+/* Badge status transaksi */
+.badge        { padding: 3px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+.badge-green  { background: #dcfce7; color: #16a34a; }
+.badge-red    { background: #fee2e2; color: #dc2626; }
+.badge-blue   { background: #dbeafe; color: #1a73e8; }
+.badge-orange { background: #fed7aa; color: #d97706; }
+
+/* ---- FILTER BAR ---- */
+/* Baris filter di halaman transaksi & laporan */
+.filter-bar {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+.filter-bar .form-group { margin-bottom: 0; }
+
+/* ---- MODAL ---- */
+/* Overlay hitam semi-transparan di belakang modal */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1050; /* lebih tinggi dari Bootstrap navbar (1030) */
+    align-items: center;
+    justify-content: center;
+}
+.modal-overlay.active { display: flex; }
+
+/* Kotak modal */
+.modal {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    width: 480px;
+    max-width: 95vw;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.modal-header h3 { font-size: 16px; margin: 0; }
+.modal-close { background: none; border: none; font-size: 20px; cursor: pointer; color: #666; }
+
+/* ---- KOTAK HASIL PERHITUNGAN ---- */
+/* Digunakan di halaman HPP dan BEP */
+.result-box {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 6px;
+    padding: 16px;
+    margin-top: 16px;
+}
+.result-box h4 { color: #0369a1; margin-bottom: 10px; font-size: 14px; }
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid #e0f2fe;
+    font-size: 14px;
+}
+.result-row:last-child { border-bottom: none; font-weight: bold; }
+
+/* ---- HALAMAN (page section) ---- */
+/* Setiap halaman disembunyikan kecuali yang .active */
+.page        { display: none; }
+.page.active { display: block; }
+
+/* ---- PAGINATION ---- */
+/* Tombol halaman di riwayat transaksi */
+.pagination { display: flex; gap: 6px; justify-content: center; margin-top: 16px; }
+.page-btn {
+    padding: 6px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    cursor: pointer;
+    background: white;
+    font-size: 13px;
+}
+.page-btn.active              { background: #1a73e8; color: white; border-color: #1a73e8; }
+.page-btn:hover:not(.active)  { background: #f1f5f9; }
+
+/* ---- ALERT / NOTIFIKASI ---- */
+/* Menggunakan Bootstrap alert class, override warna */
+.alert { padding: 12px 16px; border-radius: 4px; margin-bottom: 16px; font-size: 14px; display: none; }
+.alert-success { background: #dcfce7; color: #16a34a; border: 1px solid #bbf7d0; }
+.alert-error   { background: #fee2e2; color: #dc2626; border: 1px solid #fecaca; }
+.alert.show    { display: block; } /* ditampilkan oleh showAlert() di utils.js */
+
+/* ---- GRAFIK ---- */
+.chart-container { position: relative; height: 280px; }
+
+/* ---- LAPORAN ---- */
+.laporan-section { margin-bottom: 24px; }
+.laporan-section h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 768px) {
+    /* Sidebar pindah ke atas pada layar kecil */
+    .sidebar { width: 100%; min-height: auto; position: relative; }
+    .main-content { margin-left: 0; }
+    /* Grid menyesuaikan kolom */
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: 1fr; }
+    .grid-2 { grid-template-columns: 1fr; }
+}

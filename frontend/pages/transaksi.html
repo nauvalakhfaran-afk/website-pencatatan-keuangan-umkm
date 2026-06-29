@@ -1,0 +1,46 @@
+<!-- ============================================================
+     pages/transaksi.html
+     Halaman Riwayat Semua Transaksi
+     Logic: assets/js/transaksi.js → loadTransaksi(), resetFilter(), goPage()
+     ============================================================ -->
+<div id="page-transaksi" class="page">
+
+    <div class="card">
+        <h3 style="margin-bottom:12px">Riwayat Semua Transaksi</h3>
+
+        <!-- Filter bar -->
+        <div class="filter-bar">
+            <div class="form-group">
+                <label>Cari</label>
+                <input type="text" id="tr-search"
+                       placeholder="Cari nama transaksi..."
+                       style="width:200px"
+                       oninput="loadTransaksi()">
+            </div>
+            <div class="form-group">
+                <label>Jenis</label>
+                <select id="tr-jenis" style="width:150px" onchange="loadTransaksi()">
+                    <option value="">Semua</option>
+                    <option value="pemasukan">Pemasukan</option>
+                    <option value="pengeluaran">Pengeluaran</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Dari</label>
+                <input type="date" id="tr-dari" style="width:150px" onchange="loadTransaksi()">
+            </div>
+            <div class="form-group">
+                <label>Sampai</label>
+                <input type="date" id="tr-sampai" style="width:150px" onchange="loadTransaksi()">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-secondary" onclick="resetFilter()">Reset</button>
+            </div>
+        </div>
+
+        <!-- Tabel hasil -->
+        <div id="tabel-transaksi"></div>
+        <div id="pagination-transaksi" class="pagination"></div>
+    </div>
+
+</div>
