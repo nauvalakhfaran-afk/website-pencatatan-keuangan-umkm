@@ -1,0 +1,79 @@
+<!-- ============================================================
+     pages/hpp.html
+     Halaman Kalkulator HPP (Harga Pokok Penjualan)
+     Logic: assets/js/hpp.js → hitungHPP(), simpanHPP(), loadHPP(), hapusHPP()
+     ============================================================ -->
+<div id="page-hpp" class="page">
+    <div class="grid-2">
+
+        <!-- Panel kiri: form kalkulator -->
+        <div class="card">
+            <h3 style="margin-bottom:16px">🏭 Kalkulator HPP</h3>
+            <div id="alert-hpp" class="alert"></div>
+
+            <div class="form-group">
+                <label>Tanggal</label>
+                <input type="date" id="hpp-tanggal">
+            </div>
+            <div class="form-group">
+                <label>Nama Produk</label>
+                <input type="text" id="hpp-nama" placeholder="Nama produk">
+            </div>
+            <div class="form-group">
+                <label>Biaya Bahan Baku (Rp)</label>
+                <input type="number" id="hpp-bahan" placeholder="0" min="0" oninput="hitungHPP()">
+            </div>
+            <div class="form-group">
+                <label>Biaya Tenaga Kerja (Rp)</label>
+                <input type="number" id="hpp-tk" placeholder="0" min="0" oninput="hitungHPP()">
+            </div>
+            <div class="form-group">
+                <label>Biaya Operasional (Rp)</label>
+                <input type="number" id="hpp-ops" placeholder="0" min="0" oninput="hitungHPP()">
+            </div>
+            <div class="form-group">
+                <label>Jumlah Produk</label>
+                <input type="number" id="hpp-jml" placeholder="1" min="1" value="1" oninput="hitungHPP()">
+            </div>
+            <div class="form-group">
+                <label>
+                    Harga Jual per Produk (Rp)
+                    <span style="color:#666;font-weight:normal">(untuk hitung margin)</span>
+                </label>
+                <input type="number" id="hpp-harga" placeholder="0" min="0" oninput="hitungHPP()">
+            </div>
+
+            <!-- Kotak hasil perhitungan HPP -->
+            <div id="hpp-result" class="result-box" style="display:none">
+                <h4>Hasil Perhitungan HPP</h4>
+                <div class="result-row">
+                    <span>Total Biaya Produksi</span><span id="r-total-biaya">-</span>
+                </div>
+                <div class="result-row">
+                    <span>HPP per Produk</span><span id="r-hpp">-</span>
+                </div>
+                <div class="result-row">
+                    <span>Harga Jual</span><span id="r-harga-jual">-</span>
+                </div>
+                <div class="result-row">
+                    <span>Laba per Produk</span><span id="r-laba-produk">-</span>
+                </div>
+                <div class="result-row">
+                    <span>Margin Keuntungan</span><span id="r-margin-hpp">-</span>
+                </div>
+            </div>
+
+            <div style="display:flex;gap:8px;margin-top:12px">
+                <button class="btn btn-primary" onclick="hitungHPP()">Hitung</button>
+                <button class="btn btn-success" onclick="simpanHPP()">Simpan</button>
+            </div>
+        </div>
+
+        <!-- Panel kanan: riwayat HPP tersimpan -->
+        <div class="card">
+            <h3 style="margin-bottom:12px">Riwayat HPP</h3>
+            <div id="tabel-hpp"></div>
+        </div>
+
+    </div>
+</div>

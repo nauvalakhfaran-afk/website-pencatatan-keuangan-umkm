@@ -1,0 +1,34 @@
+<!-- ============================================================
+     pages/laporan.html
+     Halaman Laporan Keuangan
+     Logic: assets/js/laporan.js → loadLaporan()
+     ============================================================ -->
+<div id="page-laporan" class="page">
+
+    <!-- Filter periode laporan -->
+    <div class="card">
+        <h3 style="margin-bottom:16px">📑 Filter Laporan</h3>
+        <div class="filter-bar">
+            <div class="form-group">
+                <label>Periode Bulan</label>
+                <input type="month" id="lap-bulan" style="width:160px">
+            </div>
+            <span style="padding:8px;color:#666">atau</span>
+            <div class="form-group">
+                <label>Dari Tanggal</label>
+                <input type="date" id="lap-dari" style="width:150px">
+            </div>
+            <div class="form-group">
+                <label>Sampai Tanggal</label>
+                <input type="date" id="lap-sampai" style="width:150px">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" onclick="loadLaporan()">Tampilkan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Konten laporan dirender oleh laporan.js -->
+    <div id="laporan-content"></div>
+
+</div>

@@ -1,0 +1,45 @@
+<!-- ============================================================
+     pages/modal-edit.html
+     Modal Edit Transaksi (global, selalu ada di DOM)
+     Logic: assets/js/transaksi.js → editTransaksi(), simpanEdit(), closeModal()
+     ============================================================ -->
+<div class="modal-overlay" id="modal-edit">
+    <div class="modal">
+        <div class="modal-header">
+            <h3>Edit Transaksi</h3>
+            <button class="modal-close" onclick="closeModal()">✕</button>
+        </div>
+        <div id="alert-edit" class="alert"></div>
+
+        <input type="hidden" id="edit-id">
+
+        <div class="form-group">
+            <label>Tanggal</label>
+            <input type="date" id="edit-tanggal">
+        </div>
+        <div class="form-group">
+            <label>Jenis</label>
+            <select id="edit-jenis">
+                <option value="pemasukan">Pemasukan</option>
+                <option value="pengeluaran">Pengeluaran</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Nama</label>
+            <input type="text" id="edit-nama">
+        </div>
+        <div class="form-group">
+            <label>Jumlah (Rp)</label>
+            <input type="number" id="edit-jumlah" min="0">
+        </div>
+        <div class="form-group">
+            <label>Keterangan</label>
+            <input type="text" id="edit-keterangan">
+        </div>
+
+        <div style="display:flex;gap:8px;justify-content:flex-end">
+            <button class="btn btn-secondary" onclick="closeModal()">Batal</button>
+            <button class="btn btn-primary"   onclick="simpanEdit()">Simpan</button>
+        </div>
+    </div>
+</div>

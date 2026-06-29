@@ -1,0 +1,85 @@
+<!-- ============================================================
+     pages/bep.html
+     Halaman Kalkulator BEP (Break Even Point)
+     Logic: assets/js/bep.js → hitungBEP(), simpanBEP(), loadBEP(), hapusBEP()
+     ============================================================ -->
+<div id="page-bep" class="page">
+    <div class="grid-2">
+
+        <!-- Panel kiri: form kalkulator -->
+        <div class="card">
+            <h3 style="margin-bottom:16px">⚖️ Kalkulator BEP</h3>
+            <div id="alert-bep" class="alert"></div>
+
+            <div class="form-group">
+                <label>Tanggal</label>
+                <input type="date" id="bep-tanggal">
+            </div>
+            <div class="form-group">
+                <label>Nama Produk</label>
+                <input type="text" id="bep-nama" placeholder="Nama produk">
+            </div>
+            <div class="form-group">
+                <label>
+                    Biaya Tetap (Rp)
+                    <span style="color:#666;font-weight:normal">sewa, gaji tetap, dll</span>
+                </label>
+                <input type="number" id="bep-tetap" placeholder="0" min="0" oninput="hitungBEP()">
+            </div>
+            <div class="form-group">
+                <label>Harga Jual per Unit (Rp)</label>
+                <input type="number" id="bep-harga" placeholder="0" min="0" oninput="hitungBEP()">
+            </div>
+            <div class="form-group">
+                <label>
+                    Biaya Variabel per Unit (Rp)
+                    <span style="color:#666;font-weight:normal">bahan, kemasan, dll</span>
+                </label>
+                <input type="number" id="bep-variabel" placeholder="0" min="0" oninput="hitungBEP()">
+            </div>
+
+            <!-- Kotak hasil perhitungan BEP -->
+            <div id="bep-result" class="result-box" style="display:none">
+                <h4>Hasil Perhitungan BEP</h4>
+                <div class="result-row">
+                    <span>Biaya Tetap</span><span id="r-bep-tetap">-</span>
+                </div>
+                <div class="result-row">
+                    <span>Harga Jual</span><span id="r-bep-harga">-</span>
+                </div>
+                <div class="result-row">
+                    <span>Biaya Variabel</span><span id="r-bep-var">-</span>
+                </div>
+                <div class="result-row">
+                    <span>Kontribusi Margin</span><span id="r-bep-km">-</span>
+                </div>
+                <div class="result-row">
+                    <span>BEP (Unit)</span><span id="r-bep-unit">-</span>
+                </div>
+                <div class="result-row">
+                    <span>BEP (Rupiah)</span><span id="r-bep-rp">-</span>
+                </div>
+            </div>
+
+            <div style="display:flex;gap:8px;margin-top:12px">
+                <button class="btn btn-primary" onclick="hitungBEP()">Hitung</button>
+                <button class="btn btn-success" onclick="simpanBEP()">Simpan</button>
+            </div>
+
+            <!-- Info rumus -->
+            <div style="background:#fffbeb;border:1px solid #fcd34d;border-radius:6px;
+                        padding:12px;margin-top:16px;font-size:13px">
+                <strong>📚 Rumus BEP:</strong><br>
+                BEP (Unit) = Biaya Tetap ÷ (Harga Jual - Biaya Variabel)<br>
+                <span style="color:#666">Jumlah minimal produk yang harus terjual agar balik modal.</span>
+            </div>
+        </div>
+
+        <!-- Panel kanan: riwayat BEP tersimpan -->
+        <div class="card">
+            <h3 style="margin-bottom:12px">Riwayat BEP</h3>
+            <div id="tabel-bep"></div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<!-- ============================================================
+     pages/pemasukan.html
+     Halaman Pencatatan Pemasukan
+     Logic: assets/js/transaksi.js → tambahPemasukan(), loadRiwayatJenis()
+     ============================================================ -->
+<div id="page-pemasukan" class="page">
+
+    <!-- Form tambah pemasukan -->
+    <div class="card">
+        <h3 style="margin-bottom:16px">Tambah Pemasukan</h3>
+        <div id="alert-pemasukan" class="alert"></div>
+        <div class="grid-2">
+            <div class="form-group">
+                <label>Tanggal</label>
+                <input type="date" id="pm-tanggal">
+            </div>
+            <div class="form-group">
+                <label>Nama Pemasukan</label>
+                <input type="text" id="pm-nama" placeholder="Contoh: Penjualan produk A">
+            </div>
+            <div class="form-group">
+                <label>Jumlah (Rp)</label>
+                <input type="number" id="pm-jumlah" placeholder="0" min="0">
+            </div>
+            <div class="form-group">
+                <label>Keterangan</label>
+                <input type="text" id="pm-keterangan" placeholder="Opsional">
+            </div>
+        </div>
+        <button class="btn btn-success" onclick="tambahPemasukan()">+ Tambah Pemasukan</button>
+    </div>
+
+    <!-- Tabel riwayat pemasukan -->
+    <div class="card">
+        <h3 style="margin-bottom:12px">Riwayat Pemasukan</h3>
+        <div id="tabel-pemasukan"></div>
+    </div>
+
+</div>

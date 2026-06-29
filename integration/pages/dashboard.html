@@ -1,0 +1,57 @@
+<!-- ============================================================
+     pages/dashboard.html
+     Halaman Dashboard - Ringkasan & Grafik
+     Logic: assets/js/dashboard.js → loadDashboard()
+     ============================================================ -->
+<div id="page-dashboard" class="page active">
+
+    <!-- Baris 1: 4 kartu ringkasan utama -->
+    <div class="grid-4">
+        <div class="card">
+            <div class="card-title">💵 Total Pemasukan</div>
+            <div class="card-value text-green" id="dash-pemasukan">Rp 0</div>
+        </div>
+        <div class="card">
+            <div class="card-title">💸 Total Pengeluaran</div>
+            <div class="card-value text-red" id="dash-pengeluaran">Rp 0</div>
+        </div>
+        <div class="card">
+            <div class="card-title">🏦 Saldo Akhir</div>
+            <div class="card-value text-blue" id="dash-saldo">Rp 0</div>
+        </div>
+        <div class="card">
+            <div class="card-title">📊 Laba / Rugi</div>
+            <div class="card-value" id="dash-laba">Rp 0</div>
+            <div id="dash-status" style="font-size:12px;margin-top:4px"></div>
+        </div>
+    </div>
+
+    <!-- Baris 2: Margin, HPP terbaru, BEP terbaru -->
+    <div class="grid-3">
+        <div class="card">
+            <div class="card-title">📏 Margin Keuntungan</div>
+            <div class="card-value text-blue" id="dash-margin">0%</div>
+        </div>
+        <div class="card">
+            <div class="card-title">🏭 HPP/Produk (Terbaru)</div>
+            <div class="card-value text-orange" id="dash-hpp">-</div>
+            <div id="dash-hpp-nama" style="font-size:12px;color:#666;margin-top:4px"></div>
+        </div>
+        <div class="card">
+            <div class="card-title">⚖️ BEP (Terbaru)</div>
+            <div class="card-value text-orange" id="dash-bep">-</div>
+            <div id="dash-bep-nama" style="font-size:12px;color:#666;margin-top:4px"></div>
+        </div>
+    </div>
+
+    <!-- Baris 3: Grafik bar 6 bulan -->
+    <div class="card">
+        <div class="card-title" style="font-size:15px;font-weight:bold;margin-bottom:16px">
+            📈 Grafik Pemasukan &amp; Pengeluaran (6 Bulan Terakhir)
+        </div>
+        <div class="chart-container">
+            <canvas id="chart-grafik"></canvas>
+        </div>
+    </div>
+
+</div>
